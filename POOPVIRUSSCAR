@@ -1,0 +1,164 @@
+
+local unanchoredparts = {}
+local movers = {}
+ local tog = true
+ local move = false
+local Player = game:GetService("Players").LocalPlayer
+local Character = Player.Character
+local mov = {};
+local mov2 = {};
+
+--Where u change the hats
+
+local Hats = {but1   = Character:WaitForChild("MSH_MrPoopMan_Hat_AccAccessory")
+}
+
+--Dont touch below
+
+for i,v in next, Hats do
+v.Handle.AccessoryWeld:Remove()
+for _,mesh in next, v:GetDescendants() do
+if mesh:IsA("Mesh") or mesh:IsA("SpecialMesh") then
+print(mesh.Name)
+end
+end
+end
+
+function ftp(str)
+    local pt = {};
+    if str ~= 'me' and str ~= 'random' then
+        for i, v in pairs(game.Players:GetPlayers()) do
+            if v.Name:lower():find(str:lower()) then
+                table.insert(pt, v);
+            end
+        end
+    elseif str == 'me' then
+        table.insert(pt, plr);
+	elseif str == 'random' then
+		table.insert(pt, game.Players:GetPlayers()[math.random(1, #game.Players:GetPlayers())]);
+    end
+    return pt;
+end
+
+local function align(i,v)
+local att0 = Instance.new("Attachment", i)
+att0.Position = Vector3.new(0,0,0)
+local att1 = Instance.new("Attachment", v)
+att1.Position = Vector3.new(0,0,0)
+local AP = Instance.new("AlignPosition", i)
+AP.Attachment0 = att0
+AP.Attachment1 = att1
+AP.RigidityEnabled = false
+AP.ReactionForceEnabled = false
+AP.ApplyAtCenterOfMass = true
+AP.MaxForce = 9999999
+AP.MaxVelocity = math.huge
+AP.Responsiveness = 65
+local AO = Instance.new("AlignOrientation", i)
+AO.Attachment0 = att0
+AO.Attachment1 = att1
+AO.ReactionTorqueEnabled = true
+AO.PrimaryAxisOnly = false
+AO.MaxTorque = 9999999
+AO.MaxAngularVelocity = math.huge
+AO.Responsiveness = 50
+end
+
+--Dont touch above
+
+align(Hats.but1.Handle, Character["Torso"])
+Hats.but1.Handle.Attachment.Rotation = Vector3.new(0, 0, 0)
+
+
+--Attachmment1 is the 1st hat u put in Hats at the top. it goes in order
+
+Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment1"
+
+
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(2.9, -2.5, 0.9)
+
+toggle = false
+
+-- poopface
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+ if KeyPressed == "f" then
+     if toggle == false then
+
+   -- toggle on script here
+   
+   Hats.but1.Handle.Attachment.Rotation = Vector3.new(-84.4, 180, 180)
+   Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0, 1.51, -0.891)
+
+           toggle = true
+ else
+
+-- toggle off script here
+
+Hats.but1.Handle.Attachment.Rotation = Vector3.new(0, 0, 0)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(2.9, -2.5, 0.9)
+
+
+            toggle = false
+        end
+    end
+end)
+
+
+-- poop backpack
+
+poop = false
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+ if KeyPressed == "e" then
+     if poop == false then
+         
+   -- toggle on script here
+   
+   Hats.but1.Handle.Attachment.Rotation = Vector3.new(-86.5, 0, 0)
+   Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0.1, 0.098, 0.939)
+
+poop = true
+
+ else
+
+-- toggle off script here
+
+Hats.but1.Handle.Attachment.Rotation = Vector3.new(0, 0, 0)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(2.9, -2.5, 0.9)
+            poop = false
+            
+        end
+    end
+end)
+
+
+
+
+-- poop shoulder
+
+dick = false
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+ if KeyPressed == "r" then
+     if dick == false then
+         
+   -- toggle on script here
+   
+   Hats.but1.Handle.Attachment.Rotation = Vector3.new(1.7, 0, 0)
+   Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(1.4, 1.332, -0.034)
+
+dick = true
+
+ else
+
+-- toggle off script here
+
+Hats.but1.Handle.Attachment.Rotation = Vector3.new(0, 0, 0)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(2.9, -2.5, 0.9)
+            dick = false
+            
+        end
+    end
+end)
+end)
